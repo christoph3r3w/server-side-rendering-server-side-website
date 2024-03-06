@@ -1,0 +1,43 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/header'); -%>
+
+<main>
+	<section class="intro_titles">
+		<div class="intro_landmark">
+			<h1>title</h1>
+
+			<% posts.forEach(post => { %>
+				<h3><%= post.title.rendered %></h3>
+				<p><%= post.content.rendered %></p>
+			<% }); %>
+			<img src="" alt="" width="100%">
+			<aside class="intro_info">
+				<ul>
+					<li>
+						<p></p>
+						<a href=""><strong></strong></a>
+					</li>
+					<li>
+						<p></p>
+						<a href=""><strong></strong></a>
+					</li>
+				</ul>
+			</aside>
+		</div>
+	</section>
+	<section class="inleiding_section">
+		<div class="inleiding_recenties">
+			<a href=""></a>
+			<p></p>
+		</div>
+		<div class="inleiding_text">
+			<h2></h2>
+		</div>
+	</section>
+	<section>
+		<article></article>
+	</section>
+</main>
+
+
+<%- include('./partials/foot'); -%>
