@@ -6,9 +6,7 @@
 
 
 ## Debriefing 
-<!-- In de Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
-<!-- Voeg een mooie poster visual toe 📸 -->
-<!-- Voeg een link toe naar Github Pages 🌐-->
+[debriefing](https://github.com/christoph3r3w/server-side-rendering-server-side-website/wiki/(De)-briefing)
 
 ## Gebruik
 <!--Bij Gebruik staat hoe je project er uit ziet, hoe het werkt en wat je er mee kan. -->
