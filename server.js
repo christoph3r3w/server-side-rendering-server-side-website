@@ -28,11 +28,11 @@ app.get('/', function (request, response) {
   // Haal alle personen uit de WHOIS API op
   const postsUrl = `${apiUrl}/posts`;
   const usersUrl = `${apiUrl}/users`;
-  const catagoriesUrl = `${apiUrl}/catagory`
-  Promise.all([fetchJson(postsUrl), fetchJson(usersUrl), fetchJson(catagoriesUrl)])
-  .then(([postsData, usersData, catagoryData]) => {
+  const categoriesUrl = `${apiUrl}/category`;
+  Promise.all([fetchJson(postsUrl), fetchJson(usersUrl), fetchJson(categoriesUrl)])
+  .then(([postsData, usersData, categoryData]) => {
       // Render index.ejs and pass the fetched data as 'posts' and 'users' variables
-      response.render('index.ejs', { posts: postsData, users: usersData, catagory: catagoryData  });
+      response.render('index.ejs', { posts: postsData, users: usersData, category: categoryData  });
   })
   .catch((error) => {
     // Handle error if fetching data fails
@@ -59,16 +59,38 @@ app.get('/posts/:id', function (request, response) {
   });
 });
 
+// author route
+app.get('/author/:id',function(req,res){
+  // the data i need for this page
+  const postsUrl = `${apiUrl}/posts?author=${req.params.id}`;
+  const usersUrl = `${apiUrl}/users?include=${req.params.id}`;
 
+  Promise.all([fetchJson(postsUrl), fetchJson(usersUrl), fetchJson(`${apiUrl}/author/${usersUrl}`)])
+  .then(([postsData, usersData]) => {
+      // Render colofon.ejs and pass the fetched data as 'posts' and 'users' variables
+      // console.log("user", usersData, "posts", postsData)
+      res.render('author.ejs', { posts: postsData, users: usersData[0] });
+  })
 
+  // Handle error if fetching data fails
+  .catch((error) => {
+    console.error('Error fetching data:', error);
+    res.status(500).send('Error fetching data');
+  });
+
+})
+
+// TODO:
+// Category endpoint: app.get('/category/:categoryID'....)
+// Fetch https://redpers.nl/wp-json/wp/v2/posts?categories={based on params.categoryID from URL}
 
 // Maak een POST route 
-console.log("yes1")
+
 app.post('/', function (request, response) {
   // Er is nog geen afhandeling van POST, redirect naar GET op /
 
   console.log(request.body)
-  
+  console.log("yes1")
  
 
   // fetch('https://fdnd.directus.app/items/person/' + request.params.id, {

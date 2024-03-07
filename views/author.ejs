@@ -1,0 +1,14 @@
+<%- include('./partials/head'); -%>
+<%- include('./partials/header'); -%>
+
+<main>
+	<p><%= users.id %> </p>
+	<p><%= users.name %> </p>
+	<img src="<%= users.yoast_head_json.schema["@graph"][4].image.url %>" alt="not">
+	<p><%= users.yoast_head_json.description %> </p>
+</main>
+
+
+
+
+<%- include('./partials/foot'); -%>
