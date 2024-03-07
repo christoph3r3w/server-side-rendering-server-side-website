@@ -19,7 +19,7 @@ app.set('view engine', 'ejs')
 app.set('views', './views')
 
 // Gebruik de map 'public' voor statische resources, zoals stylesheets, afbeeldingen en client-side JavaScript
-app.use(express.static('public'))
+app.use(express.static('./public/'))
 
 app.use(express.urlencoded({extented:true}))
 
@@ -28,10 +28,11 @@ app.get('/', function (request, response) {
   // Haal alle personen uit de WHOIS API op
   const postsUrl = `${apiUrl}/posts`;
   const usersUrl = `${apiUrl}/users`;
-  Promise.all([fetchJson(postsUrl), fetchJson(usersUrl)])
-  .then(([postsData, usersData]) => {
+  const catagoriesUrl = `${apiUrl}/catagory`
+  Promise.all([fetchJson(postsUrl), fetchJson(usersUrl), fetchJson(catagoriesUrl)])
+  .then(([postsData, usersData, catagoryData]) => {
       // Render index.ejs and pass the fetched data as 'posts' and 'users' variables
-      response.render('index', { posts: postsData, users: usersData });
+      response.render('index.ejs', { posts: postsData, users: usersData, catagory: catagoryData  });
   })
   .catch((error) => {
     // Handle error if fetching data fails
@@ -42,14 +43,14 @@ app.get('/', function (request, response) {
 })
 
 
-app.get('/post/:id', function (request, response) {
+app.get('/posts/:id', function (request, response) {
   // Fetch the post with the given id from the API
   const postId = request.params.id;
 
   fetchJson(`${apiUrl}/posts/${postId}`)
   .then((apiData) => {
       // Render post.ejs and pass the fetched data as 'post' variable
-      response.render('post', { post: apiData });
+      response.render('posts.ejs', { post: apiData  });
   })
   .catch((error) => {
       // Handle error if fetching data fails
@@ -57,6 +58,7 @@ app.get('/post/:id', function (request, response) {
       response.status(404).send('Post not found');
   });
 });
+
 
 
 
@@ -94,5 +96,6 @@ app.set('port', process.env.PORT || 8004)
 // Start express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
+  console.log('Server is running on port 8004')
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })

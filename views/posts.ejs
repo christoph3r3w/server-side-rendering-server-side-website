@@ -1,0 +1,48 @@
+<%- include('./partials/head', {head: ''}); -%>
+<%- include('./partials/header', {header: ''}); -%>
+
+<main>
+	<section class="intro_titles">
+		<div class="intro_landmark">
+			<h1>title</h1>
+
+			<p><%- post.excerpt.rendered %></p>
+			<img src="" alt="" >
+			<img decoding="async" src="<%= post.yoast_head_json.og_image[0].url %>" alt="" width="100%">
+
+			<aside class="intro_info">
+				<ul>
+					<br>
+					<li>
+						<p>author</p>
+						
+						<a href="<%= post.yoast_head_json.schema["@graph"][6].url %>"><strong><%= post.yoast_head_json.schema["@graph"][6].name %></strong></a>
+					</li>
+					<br>
+					<li>
+						<p></p>
+						<a href=""><strong></strong></a>
+					</li>
+				</ul>
+			</aside>
+		</div>
+	</section>
+
+	<section class="inleiding_section">
+		<div class="inleiding_recenties">
+			<a href=""></a>
+			<p></p>
+		</div>
+		<div class="inleiding_text">
+			<h2></h2>
+		</div>
+	</section>
+	<br>
+	<hr>
+	<br>
+	<section>
+		<article><%- post.content.rendered %></article>
+	</section>
+</main>
+
+<%- include('./partials/foot'); -%>
