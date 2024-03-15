@@ -21,12 +21,12 @@ app.set('views', './views')
 // Gebruik de map 'public' voor statische resources, zoals stylesheets, afbeeldingen en client-side JavaScript
 app.use(express.static('./public/'))
 
-app.use(express.urlencoded({extented:true}))
+app.use(express.urlencoded({extended:true}))
 
 // Maak een GET route voor de index
 app.get('/', function (request, response) {
   // Haal alle personen uit de WHOIS API op
-  const postsUrl = `${apiUrl}/posts`;
+  const postsUrl = `${apiUrl}/posts?per_page=27`;
   const usersUrl = `${apiUrl}/users`;
   const categoriesUrl = `${apiUrl}/category`;
   Promise.all([fetchJson(postsUrl), fetchJson(usersUrl), fetchJson(categoriesUrl)])

@@ -1,4 +1,10 @@
 <%- include('./partials/head', {head: ''}); -%>
+<title>RED PERS - artikel </title>
+</head>
+
+
+<body>
+
 <%- include('./partials/header', {header: ''}); -%>
 
 <main class="post_article" >
@@ -30,6 +36,7 @@
 			<aside></aside>
 		</div>
 	</section>
+	
 	<!-- article inleiding -->
 	<section class="inleiding_section">
 		<div class="inleiding_recenties">
@@ -41,9 +48,7 @@
 		</div>
 	</section>
 
-	<br>
-	<hr>
-	<br>
+	
 	<!-- article content -->
 	<section class="post_article_content">
 		<article><%- post.content.rendered %></article>
