@@ -9,6 +9,8 @@ const apiUrl = 'https://redpers.nl/wp-json/wp/v2';
 
 // const data_c = await fetchJson('https://fdnd.directus.app/items/person/40')
 
+// 	open: false, // When false, it won't load your browser by default.
+// 	ignore: '', // comma-separated string for paths to ignore
 // Maak een nieuwe express app aan
 const app = express()
 
