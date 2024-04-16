@@ -1,7 +1,7 @@
 
 
 # Red Pers
-<!-- Geef je project een titel en schrijf in één zin wat het is -->
+![Screenshot 2024-03-18 1543318](https://github.com/christoph3r3w/server-side-rendering-server-side-website/assets/144007933/6b305ea5-1e3d-4463-98a6-f25e6cbdd57c)
 
 
 
